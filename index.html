@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - codingnepalweb.com -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analog Clock JavaScript</title>
+    <link rel="stylesheet" href="index.css" />
+    <script src="index.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="clock">
+        <label style="--i: 1"><span>1</span></label>
+        <label style="--i: 2"><span>2</span></label>
+        <label style="--i: 3"><span>3</span></label>
+        <label style="--i: 4"><span>4</span></label>
+        <label style="--i: 5"><span>5</span></label>
+        <label style="--i: 6"><span>6</span></label>
+        <label style="--i: 7"><span>7</span></label>
+        <label style="--i: 8"><span>8</span></label>
+        <label style="--i: 9"><span>9</span></label>
+        <label style="--i: 10"><span>10</span></label>
+        <label style="--i: 11"><span>11</span></label>
+        <label style="--i: 12"><span>12</span></label>
+
+        <div class="indicator">
+          <span class="hand hour"></span>
+          <span class="hand minute"></span>
+          <span class="hand second"></span>
+        </div>
+      </div>
+
+      <div class="mode-switch">Dark Mode</div>
+    </div>
+  </body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        #clock {
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background-color: grey;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .number {
+            position: absolute;
+            color: #333;
+            font-size: 20px;
+            font-weight: bold;
+            transform-origin: bottom;
+        }
+
+        .hand {
+          position: absolute;
+          background-color: black;
+          transform-origin: bottom;
+          left: 50%; /* Center the hands horizontally */
+          top: 50%; /* Center the hands vertically */
+        }
+
+        #num1 { top: 14%; left: 65%; transform: translate(-50%, -50%); }
+        #num2 { top: 23%; right: 12%; transform: translate(50%, -50%); }
+        #num3 { top: 50%; right: 22%; transform: translate(50%, 50%); }
+        #num4 { bottom: 22%; right: 12%; transform: translate(50%, 50%); }
+        #num5 { bottom: 6%; left: 55%; transform: translate(-50%, 50%); }
+        #num6 { bottom: 14%; left: 50%; transform: translate(-50%, -50%); }
+        #num7 { bottom: 50%; left: 22%; transform: translate(-50%, 50%); }
+        #num8 { top: 22%; left: 12%; transform: translate(-50%, -50%); }
+        #num9 { top: 10%; right: 80%; transform: translate(50%, 50%); }
+        #num10 { bottom: 83%; right: 60%; transform: translate(50%, 50%); }
+        #num11 { bottom: 86%; left: 28%; transform: translate(-50%, 50%); }
+        #num12 { top: 14%; left: 48%; transform: translate(-50%, -50%); }
+
+
+
+        #hourHand {
+          width: 4px;
+          height: 80px;
+          /* align-items: center; */
+          transform: translate(-50%, -80%);
+        }
+
+        #minuteHand {
+          width: 3px;
+          height: 110px;
+          /* align-items: center; */
+          transform: translate(-50%, -110%)
+        }
+
+        #secondHand {
+          width: 2px;
+          height: 130px;
+          /* align-items: center; */
+          transform: translate(-50%, -130%)
+        }
+    </style>
+</head>
+<body>
+    <div id="clock">
+        <!-- Numbers -->
+        <div class="number" id="num1">1</div>
+        <div class="number" id="num2">2</div>
+        <div class="number" id="num3">3</div>
+        <div class="number" id="num4">4</div>
+        <div class="number" id="num5">5</div>
+        <div class="number" id="num6">6</div>
+        <div class="number" id="num7">7</div>
+        <div class="number" id="num8">8</div>
+        <div class="number" id="num9">9</div>
+        <div class="number" id="num10">10</div>
+        <div class="number" id="num11">11</div>
+        <div class="number" id="num12">12</div>
+        
+        <!-- Clock Hands -->
+        <div id="hourHand" class="hand"></div>
+        <div id="minuteHand" class="hand"></div>
+        <div id="secondHand" class="hand"></div>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+
+            // Calculate angles for hours, minutes, and seconds
+            const hourAngle = (hours % 12) * 30 + minutes / 2; // Each hour is 30 degrees, plus 0.5 degrees for each minute
+            const minuteAngle = minutes * 6 + seconds / 10; // Each minute is 6 degrees, plus 0.1 degrees for each second
+            const secondAngle = seconds * 6; // Each second is 6 degrees
+
+            // Apply rotation to clock hands
+            document.getElementById('hourHand').style.transform = `rotate(${hourAngle}deg)`;
+            document.getElementById('minuteHand').style.transform = `rotate(${minuteAngle}deg)`;
+            document.getElementById('secondHand').style.transform = `rotate(${secondAngle}deg)`;
+        }
+
+        // Update the clock every second
+        setInterval(updateClock, 1000);
+
+        // Initial update
+        updateClock();
+    </script>
+</body>
+</html> -->
